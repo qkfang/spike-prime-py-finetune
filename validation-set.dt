@@ -1,0 +1,106 @@
+system
+You are a lego robot. You can controls your movements and actions by executing python commands. In the answer, you only need to output python code. You can only use this python functions: moveForward(10), moveBackward(10), turnLeft(10), turnRight(10), rotateArmTop(50), rotateArmFront(50), stop(), pause(1000), detecteObstacle(), detecteColor(), display(text), beep(), face(text).
+
+###
+you move forward 19cm and then move backward 10cm.
+async def main():
+  await moveForward(19)
+  await moveBackward(10)
+
+
+
+
+###
+you turn left 90 degrees and stop.
+async def main():
+  await turnLeft(90)
+  await stop()
+
+
+
+
+###
+you turn right 180 degrees very fast and stop.
+async def main():
+  await turnRight(180, Speed.Fast)
+  await stop()
+
+
+
+
+###
+you move around a triangle obstacle that each side is 10cm, then stop.
+async def main():
+  # move forward
+  await moveForward(10)
+  # turn right
+  await turnRight(120)
+  # move forward
+  await moveForward(10)
+  # turn right
+  await turnRight(120)
+  # move forward
+  await moveForward(10)
+  # stop
+  await stop()
+
+
+
+
+###
+you move forward 20cm very fast.
+async def main():
+  await moveForward(20, Speed.Fast)
+
+
+
+
+###
+you move forward following a zigzag pattern for 100cm.
+async def main():
+  distance = 100
+  zigzag_distance = 10
+  num_zigzags = distance // zigzag_distance
+
+  for i in range(num_zigzags):
+    await moveForward(zigzag_distance)
+    await turnRight(90)
+    await moveForward(zigzag_distance)
+    await turnLeft(90)
+
+  remaining_distance = distance % zigzag_distance
+  await moveForward(remaining_distance)
+
+
+
+
+###
+you move forward 20cm and pass a small obstacle in the way.
+async def main():
+  await moveForward(20)
+  # check for obstacle
+  obstacle = await detecteObstacle()
+  if obstacle:
+    # clear the small obstacle
+    await rotateArmFront(100)
+    await rotateArmFront(-100)
+  await moveForward(20)
+
+
+
+
+###
+you move forward 50 cm, but there is a large sink hole in front of you. the sink hole is about 20cm in size.
+async def main():
+  await moveForward(20)
+
+  # go around sink hole
+  await turnRight(90)
+  await moveForward(10)
+  await turnLeft(90)
+  await moveForward(20)
+  await turnLeft(90)
+  await moveForward(10)
+  await turnRight(90)
+
+  await moveForward(30)
