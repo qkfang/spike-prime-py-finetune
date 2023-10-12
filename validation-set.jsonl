@@ -1,0 +1,128 @@
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a lego robot. You can controls your movements and actions by executing python commands. In the answer, you only need to output python code. You can only use this python functions: moveForward(10), moveBackward(10), turnLeft(10), turnRight(10), rotateArmTop(50), rotateArmFront(50), stop(), pause(1000), detecteObstacle(), detecteColor(), display(text), beep(), face(text)."
+        },
+        {
+            "role": "user",
+            "content": "you move forward 19cm and then move backward 10cm."
+        },
+        {
+            "role": "assistant",
+            "content": "async def main():\n  await moveForward(19)\n  await moveBackward(10)\n\n\n\n\n\n"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a lego robot. You can controls your movements and actions by executing python commands. In the answer, you only need to output python code. You can only use this python functions: moveForward(10), moveBackward(10), turnLeft(10), turnRight(10), rotateArmTop(50), rotateArmFront(50), stop(), pause(1000), detecteObstacle(), detecteColor(), display(text), beep(), face(text)."
+        },
+        {
+            "role": "user",
+            "content": "you turn left 90 degrees and stop."
+        },
+        {
+            "role": "assistant",
+            "content": "async def main():\n  await turnLeft(90)\n  await stop()\n\n\n\n\n\n"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a lego robot. You can controls your movements and actions by executing python commands. In the answer, you only need to output python code. You can only use this python functions: moveForward(10), moveBackward(10), turnLeft(10), turnRight(10), rotateArmTop(50), rotateArmFront(50), stop(), pause(1000), detecteObstacle(), detecteColor(), display(text), beep(), face(text)."
+        },
+        {
+            "role": "user",
+            "content": "you turn right 180 degrees very fast and stop."
+        },
+        {
+            "role": "assistant",
+            "content": "async def main():\n  await turnRight(180, Speed.Fast)\n  await stop()\n\n\n\n\n\n"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a lego robot. You can controls your movements and actions by executing python commands. In the answer, you only need to output python code. You can only use this python functions: moveForward(10), moveBackward(10), turnLeft(10), turnRight(10), rotateArmTop(50), rotateArmFront(50), stop(), pause(1000), detecteObstacle(), detecteColor(), display(text), beep(), face(text)."
+        },
+        {
+            "role": "user",
+            "content": "you move around a triangle obstacle that each side is 10cm, then stop."
+        },
+        {
+            "role": "assistant",
+            "content": "async def main():\n  # move forward\n  await moveForward(10)\n  # turn right\n  await turnRight(120)\n  # move forward\n  await moveForward(10)\n  # turn right\n  await turnRight(120)\n  # move forward\n  await moveForward(10)\n  # stop\n  await stop()\n\n\n\n\n\n"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a lego robot. You can controls your movements and actions by executing python commands. In the answer, you only need to output python code. You can only use this python functions: moveForward(10), moveBackward(10), turnLeft(10), turnRight(10), rotateArmTop(50), rotateArmFront(50), stop(), pause(1000), detecteObstacle(), detecteColor(), display(text), beep(), face(text)."
+        },
+        {
+            "role": "user",
+            "content": "you move forward 20cm very fast."
+        },
+        {
+            "role": "assistant",
+            "content": "async def main():\n  await moveForward(20, Speed.Fast)\n\n\n\n\n\n"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a lego robot. You can controls your movements and actions by executing python commands. In the answer, you only need to output python code. You can only use this python functions: moveForward(10), moveBackward(10), turnLeft(10), turnRight(10), rotateArmTop(50), rotateArmFront(50), stop(), pause(1000), detecteObstacle(), detecteColor(), display(text), beep(), face(text)."
+        },
+        {
+            "role": "user",
+            "content": "you move forward following a zigzag pattern for 100cm."
+        },
+        {
+            "role": "assistant",
+            "content": "async def main():\n  distance = 100\n  zigzag_distance = 10\n  num_zigzags = distance // zigzag_distance\n\n  for i in range(num_zigzags):\n    await moveForward(zigzag_distance)\n    await turnRight(90)\n    await moveForward(zigzag_distance)\n    await turnLeft(90)\n\n  remaining_distance = distance % zigzag_distance\n  await moveForward(remaining_distance)\n\n\n\n\n\n"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a lego robot. You can controls your movements and actions by executing python commands. In the answer, you only need to output python code. You can only use this python functions: moveForward(10), moveBackward(10), turnLeft(10), turnRight(10), rotateArmTop(50), rotateArmFront(50), stop(), pause(1000), detecteObstacle(), detecteColor(), display(text), beep(), face(text)."
+        },
+        {
+            "role": "user",
+            "content": "you move forward 20cm and pass a small obstacle in the way."
+        },
+        {
+            "role": "assistant",
+            "content": "async def main():\n  await moveForward(20)\n  # check for obstacle\n  obstacle = await detecteObstacle()\n  if obstacle:\n    # clear the small obstacle\n    await rotateArmFront(100)\n    await rotateArmFront(-100)\n  await moveForward(20)\n\n\n\n\n\n"
+        }
+    ]
+}
+{
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are a lego robot. You can controls your movements and actions by executing python commands. In the answer, you only need to output python code. You can only use this python functions: moveForward(10), moveBackward(10), turnLeft(10), turnRight(10), rotateArmTop(50), rotateArmFront(50), stop(), pause(1000), detecteObstacle(), detecteColor(), display(text), beep(), face(text)."
+        },
+        {
+            "role": "user",
+            "content": "you move forward 50 cm, but there is a large sink hole in front of you. the sink hole is about 20cm in size."
+        },
+        {
+            "role": "assistant",
+            "content": "async def main():\n  await moveForward(20)\n\n  # go around sink hole\n  await turnRight(90)\n  await moveForward(10)\n  await turnLeft(90)\n  await moveForward(20)\n  await turnLeft(90)\n  await moveForward(10)\n  await turnRight(90)\n\n  await moveForward(30)\n\n"
+        }
+    ]
+}
