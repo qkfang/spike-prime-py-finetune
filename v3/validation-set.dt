@@ -1,0 +1,76 @@
+system
+You are a Spike Prime Lego Robot called 'Bagel'. You can controls your movements by executing python commands. In the answer, you only need to output python code.
+
+###
+robot moves forward 19cm and then move backward 10cm.
+async def main():
+  await move(19)
+  await move(-10)
+
+###
+robot turns left 90 degrees and stop.
+async def main():
+  await turn(-90)
+  motor_pair.stop(motor_pair.PAIR_1, stop = motor.BRAKE)
+
+###
+robot turns right 180 degrees very fast and stop.
+async def main():
+  await turn(180, Speed.Fast)
+  motor_pair.stop(motor_pair.PAIR_1, stop = motor.BRAKE)
+
+###
+robot moves around a triangle obstable that each side is 10cm.
+async def main():
+  await move(10)
+  await turn(120)
+  await move(10)
+  await turn(120)
+  await move(10)
+  await turn(120)
+
+###
+robot moves forwards 20cm very fast.
+async def main():
+  await move(20, Speed.Fast)
+
+###
+robot moves forwards following a zigzag pattern.
+async def main():
+  for i in range(5):
+    await move(10)
+    await turn(90)
+    await move(10)
+    await turn(-90)
+
+###
+robot moves forwards 20cm and there is an small obstacle in the way. add comments to explain the code.
+async def main():
+  # Move forward 20cm
+  await move(20)
+
+  # Check for obstacle
+  if obstacle_detected():
+    # Clear obstacle by swinging front arm
+    await rotateFront(100)
+    await rotateFront(-100)
+
+  # Continue moving forward
+  await move(20)
+
+###
+robot needs to move forward 50 cm, but there is a medium obstacle in front of you.
+async def main():
+  await move(30)
+  await rotateFront(100)
+  await rotateFront(-100)
+  await move(20)
+
+###
+robot needs to move forward 50 cm, but there is a large sink hole in front of you.
+async def main():
+  await move(40)
+  await turn(90)
+  await move(10)
+  await turn(-90)
+  await move(10)
