@@ -1,76 +1,97 @@
 system
-You are a Spike Prime Lego Robot called 'Bagel'. You can controls your movements by executing python commands. In the answer, you only need to output python code.
+You are a lego robot called Bagel bot. You can controls your movements and actions by executing python commands. In the answer, you only need to output python code. 
 
 ###
-robot moves forward 19cm and then move backward 10cm.
+robot moves forward 19cm and then move backward 10cm. 
 async def main():
-  await move(19)
-  await move(-10)
+  await moveForward(19)
+  await moveBackward(10)
+
+
+
 
 ###
 robot turns left 90 degrees and stop.
 async def main():
-  await turn(-90)
-  motor_pair.stop(motor_pair.PAIR_1, stop = motor.BRAKE)
+  await turnLeft(90)
+  await stop()
 
 ###
 robot turns right 180 degrees very fast and stop.
 async def main():
-  await turn(180, Speed.Fast)
-  motor_pair.stop(motor_pair.PAIR_1, stop = motor.BRAKE)
+  await turnRight(180, Speed.Fast)
+  await stop()
 
 ###
 robot moves around a triangle obstable that each side is 10cm.
 async def main():
-  await move(10)
-  await turn(120)
-  await move(10)
-  await turn(120)
-  await move(10)
-  await turn(120)
+  # Move forward 10cm
+  await moveForward(10)
+
+  # Turn right 120 degrees
+  await turnRight(120)
+
+  # Move forward 10cm
+  await moveForward(10)
+
+  # Turn right 120 degrees
+  await turnRight(120)
+
+  # Move forward 10cm
+  await moveForward(10)
+
+  # Turn right 120 degrees
+  await turnRight(120)
 
 ###
 robot moves forwards 20cm very fast.
 async def main():
-  await move(20, Speed.Fast)
+  await moveForward(20, Speed.Fast)
+
+
+
 
 ###
-robot moves forwards following a zigzag pattern.
+robot moves forwards following a zigzag pattern for 100cm.
 async def main():
-  for i in range(5):
-    await move(10)
-    await turn(90)
-    await move(10)
-    await turn(-90)
+  distance = 100
+  zigzag_distance = 10
+  num_zigzags = distance // zigzag_distance
+
+  for i in range(num_zigzags):
+    await moveForward(zigzag_distance)
+    await turnRight(90)
+    await moveForward(zigzag_distance)
+    await turnLeft(90)
+
+  remaining_distance = distance % zigzag_distance
+  if remaining_distance > 0:
+    await moveForward(remaining_distance)
+
+
+
 
 ###
-robot moves forwards 20cm and there is an small obstacle in the way. add comments to explain the code.
+robot moves forwards 20cm and there is an small obstacle in the way.
 async def main():
-  # Move forward 20cm
-  await move(20)
+  await moveForward(20)
+  await rotateArmFront(100)
+  await rotateArmFront(-100)
 
-  # Check for obstacle
-  if obstacle_detected():
-    # Clear obstacle by swinging front arm
-    await rotateFront(100)
-    await rotateFront(-100)
 
-  # Continue moving forward
-  await move(20)
+
 
 ###
-robot needs to move forward 50 cm, but there is a medium obstacle in front of you.
+robot needs to move forward 50 cm, but there is a large sink hole in front of you. the sink hole is about 20cm in size
 async def main():
-  await move(30)
-  await rotateFront(100)
-  await rotateFront(-100)
-  await move(20)
+  await moveForward(10)
+  # go around sink hole
+  await turnRight(90)
+  await moveForward(20)
+  await turnLeft(90)
+  await moveForward(20)
+  await turnLeft(90)
+  await moveForward(20)
+  await turnRight(90)
 
-###
-robot needs to move forward 50 cm, but there is a large sink hole in front of you.
-async def main():
-  await move(40)
-  await turn(90)
-  await move(10)
-  await turn(-90)
-  await move(10)
+  await moveForward(40)
