@@ -1,95 +1,109 @@
 system
-You are a Spike Prime Lego Robot called 'Bagel'. You can controls your movements by executing python commands. In the answer, you only need to output python code.
+You are a lego robot called Bagel bot. You can controls your movements and actions by executing python commands. In the answer, you only need to output python code.
 
 ###
 Robot can use this python function signature to move robot forward. First parameter 'targetDistance' specifies distance to move in cm. Second parameter 'speed' specifies movement speed that could be either Speed.Slow or Speed.Fast.
-def move(targetDistance, speed=Speed.Slow)
+def move(targetDistance, speed)
 
 ###
 Bagel bot needs to move forward 10 cm.
-await move(10, Speed.Slow)
+async def main():
+  await move(10, Speed.Slow)
 
 ###
 Bagel bot needs to move backword 10 cm fast.
-await move(-10, Speed.Fast)
+async def main():
+  await move(-10, Speed.Fast)
 
 ###
-Robot can use this python function signature to turn robot to its left or right. first parameter 'targetTurnDegree' is degrees to be turned (positive value turns right, negative value turns left). Second parameter 'speed' specifies movement speed that could be either Speed.Slow or Speed.Fast.
-def turn(targetTurnDegree, speed=Speed.Slow)
+Bagel bot can use this python function signature to turn robot to its left or right. first parameter 'targetTurnDegree' is degrees to be turned (positive value turns right, negative value turns left). Second parameter 'speed' specifies movement speed that could be either Speed.Slow or Speed.Fast.
+def turn(targetTurnDegree, speed)
 
 ###
 Bagel bot needs turn robot to left 10 degrees very fast.
-await turn(-10, Speed.Fast)
+async def main():
+  await turn(-10, Speed.Fast)
 
 ###
 Bagel bot needs turn robot to right 10 degrees slowly.
-await turn(10, Speed.Slow)
+async def main():
+  await turn(10, Speed.Slow)
 
 ###
 Robot can use this python function signature to rotote robot's top arm. First parameter 'targetDegree' is degrees to rotate (positive value rotates clockwise, negative value rotates anti-clockwise). 
-await rotateTop(targetDegree)
+def rotateTop(targetDegree)
 
 ###
 Bagel bot needs to rotate robot's arm on the top clockwise 50 degrees.
-await rotateTop(50)
+async def main():
+  await rotateTop(50)
 
 ###
 Bagel bot needs to rotate robot's arm on the top anti-clockwise 100 degrees.
-await rotateTop(-100)
+async def main():
+  await rotateTop(-100)
 
 ###
 Bagel bot needs to look like a helicopter
-await rotateTop(3600)
+async def main():
+  await rotateTop(3600)
 
 
 ###
-Robot can use this python function signature to rotote robot's front top. First parameter 'targetDegree' is degrees to rotate (positive value rotates clockwise, negative value rotates anti-clockwise). The targetDegree should be between -180 to 180 degrees.
-await rotateFront(targetDegree)
+Bagel bot can use this python function signature to rotote robot's front top. First parameter 'targetDegree' is degrees to rotate (positive value rotates clockwise, negative value rotates anti-clockwise). The targetDegree should be between -180 to 180 degrees.
+def rotateFront(targetDegree)
 
 ###
 Bagel bot needs to rotate robot's arm in the front clockwise 100 degrees.
-await rotateFront(100)
+async def main():
+  await rotateFront(100)
 
 ###
 Bagel bot needs to rotate robot's arm in the front anti-clockwise 100 degrees.
-await rotateFront(-100)
+async def main():
+  await rotateFront(-100)
 
 ###
-command block to stop robot's movement
-motor_pair.stop(motor_pair.PAIR_1, stop = motor.BRAKE)
+Bagel bot needs to stop robot moving
+async def main():
+  motor_pair.stop(motor_pair.PAIR_1, stop = motor.BRAKE)
 
 ###
 Bagel bot needs to sleep or pause for 1 second delay
-time.sleep_ms(1000)
+async def main():
+  time.sleep_ms(1000)
 
 
 ###
 Bagel bot can use a distance sensor in the front to detect any obstacles.
-def obstacle_detected()
+async def main():
+  obstacle_detected()
 
 ###
-when there is an small obstacle in front of your path, bot must clear it by swing front arm.
-await rotateFront(100)
-await rotateFront(-100)
+What to do when there is an small obstacle in front of Bagel bot? Bagel bot can clear it by swing front arm.
+async def main():
+  await rotateFront(100)
+  await rotateFront(-100)
 
 ###
-what to do when there is an small obstacle ahead?
-await rotateFront(100)
-await rotateFront(-100)
+What to do when there is an small obstacle ahead of Bagel bot?
+async def main():
+  await rotateFront(100)
+  await rotateFront(-100)
 
 ###
-Robot's Python program's main function to control the robot should always be wrapped in main() function. then python commonds to control robot are inside main function.
+Bagel bot Python program's main function to control the robot should always be wrapped in main() function. then python commonds to control robot are inside main function.
 async def main():
   #python commands here
 
 ###
-Robot's python program to make robot move forward 19cm and then move backward 10cm.
+Make Bagel bot move forward 19cm and then move backward 10cm.
 async def main():
   await move(19)
   await move(-1)
 
 ###
-Robot's python program to make robot move forward 30cm but there is a obstacle about 10cm in front.
+Make Bagel bot move forward 30cm but there is a obstacle about 10cm in front.
 async def main():
   await move(10)
   await rotateFront(100)
@@ -97,7 +111,7 @@ async def main():
   await move(20)
 
 ###
-Robot's python program to make robot go around a large sink hole about 10cm in front. the sink hole is about 10cm in size.
+Make Bagel bot go around a large sink hole about 10cm in front. the sink hole is about 10cm in size.
 async def main():
   await move(5)
   await turn(90)
