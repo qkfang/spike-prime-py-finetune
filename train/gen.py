@@ -1,5 +1,3 @@
-#Note: The openai-python library support for Azure OpenAI is in preview.
-      #Note: This code sample requires OpenAI Python library version 1.0.0 or higher.
 import os
 import re
 import json
@@ -35,6 +33,5 @@ def Generate(fileIn, fileOut):
         f.write('\n')
     f.close()
 
-    
 Generate('training-set.dt', 'training-set.jsonl')
 Generate('validation-set.dt', 'validation-set.jsonl')
