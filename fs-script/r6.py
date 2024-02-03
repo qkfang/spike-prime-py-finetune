@@ -1,0 +1,34 @@
+import json
+import requests
+
+# az account get-access-token
+token= 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlhSdmtvOFA3QTNVYVdTblU3Yk05blQwTWpoQSIsImtpZCI6IlhSdmtvOFA3QTNVYVdTblU3Yk05blQwTWpoQSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9kZWJiN2U4Ni0yMDk2LTQ2MDItOGFkNS00Y2U1ODllMWE2MjkvIiwiaWF0IjoxNzA5NDQzNTc4LCJuYmYiOjE3MDk0NDM1NzgsImV4cCI6MTcwOTQ0OTE5NiwiYWNyIjoiMSIsImFpbyI6IkFiUUFTLzhXQUFBQVNwSXdEVG8xQkxQTHFIY0EzOHo4UnVxcFVaTU9RRXFTTStVZ3I2aWdGYTJnZ2hiTUl4UXNWa0J2Q2JwZ1ZnWkl3YmMvMGhhL3ZrVnZhcmtXZm9ZelJzQ2kvT1p4NHZPZE1ieWxtY1BPQUtGaFlocGYxcy9NNTVEQUNkZ1o5TGtMdUJiMDJBeVhxSHVsb2VXRGJvZGE3b3hwdDlOKzA1THViUXdOdUs4YWJtSWpEYThWZnR0UWNINW9JK3FUbS9MMkI4eUloMkkxWFRuODA5cWRNL2NweXpOeW1DRm85dHR1QkJNenRFWnJKVms9IiwiYW1yIjpbInJzYSIsIm1mYSJdLCJhcHBpZCI6IjA0YjA3Nzk1LThkZGItNDYxYS1iYmVlLTAyZjllMWJmN2I0NiIsImFwcGlkYWNyIjoiMCIsImRldmljZWlkIjoiYWFlNmIzM2MtOTZhZi00MmNkLWE5NzgtNDMzZWQxYTdkNThiIiwiZmFtaWx5X25hbWUiOiJBaWZlbiIsImdpdmVuX25hbWUiOiJEYWkiLCJncm91cHMiOlsiYmRiYjE4NGUtNDY5ZC00YWZjLTgwOWMtYjdkY2ZhYzExNjZkIiwiNWNmZDI2YWUtNzRjZS00Mjk5LWJiNTUtYTlhZTNjOTRjYmRhIiwiYWRlMzVjZDItZmJmNy00ODYxLWE2ZjQtNWRkMzE4OGY3MzNkIiwiNTAwZjIyZDgtODg2OC00MGZiLTg0ZWQtZWNkOWRkNzQ4ZTVlIiwiZjcwOGRlZjEtNDkxZC00ZDFiLThjYjAtNGE4MGRlMWE4ZjAyIl0sImlkdHlwIjoidXNlciIsImlwYWRkciI6IjU4LjExMC4yNDUuMjE5IiwibmFtZSI6IkRhaSBBaWZlbiIsIm9pZCI6ImExNWFmOTNkLTQyNzktNGM0OC05ZGZhLTUxMzM0NmU1NDY3MSIsInB1aWQiOiIxMDAzQkZGREFDNUUyODIxIiwicmgiOiIwLkFXWUFobjY3M3BZZ0FrYUsxVXpsaWVHbUtVWklmM2tBdXRkUHVrUGF3ZmoyTUJObUFCNC4iLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiJCWDRnSFd3TGJSMUNGZFJjUnZvTi1PdmZsVE1vNV8tRjR1R1NTOE5pWUhJIiwidGlkIjoiZGViYjdlODYtMjA5Ni00NjAyLThhZDUtNGNlNTg5ZTFhNjI5IiwidW5pcXVlX25hbWUiOiJkYWlAYWlmZW4uYXBwIiwidXBuIjoiZGFpQGFpZmVuLmFwcCIsInV0aSI6Imt2VXZXdjZUdlVHSHlFVkFMeXgwQUEiLCJ2ZXIiOiIxLjAiLCJ3aWRzIjpbIjYyZTkwMzk0LTY5ZjUtNDIzNy05MTkwLTAxMjE3NzE0NWUxMCIsImI3OWZiZjRkLTNlZjktNDY4OS04MTQzLTc2YjE5NGU4NTUwOSJdLCJ4bXNfY2FlIjoiMSIsInhtc19jYyI6WyJDUDEiXSwieG1zX2ZpbHRlcl9pbmRleCI6WyIxMDIiXSwieG1zX3JkIjoiMC40MkxsWUJSaVRBTUEiLCJ4bXNfc3NtIjoiMSIsInhtc190Y2R0IjoxNTMxNzA3NzA4fQ.L98K18YZvydh-1uHzkv01_oDDjnwTbrefYnjHE7Jvi26Euh6tby0EhjHLUhVXj4qVWVenrhI0uaRJeywSq8VLeytxrA_alU0wxHkoDUMlL9lcRuvk0oLEMc1w6sOvtiMHDtbMDD0FCjetK3abanq48ed9g5O39qrGWQiNUkgS1qLHB3cSYfIbZ4Aqrcaj6pe3CFFYFj7-Cq6Vb7yYLpjDQpKsSmAOSgFt3WPJ9WmRoNNnOcVyBpL-Di7fedhUV0pA-pUsViqaNXNVNMQeD_QRNZWxFJjPrF97G7irCXXUhvDoSkQ-KXZccrNZdxKkNn7UDfKwNGIwdmsGnLEUoI5Wg'
+subscription = "13ed8a1c-5393-411b-9928-8a8cbe4c6ff2"  
+resource_group = "rg-core9"
+resource_name = "oai-north-22"
+model_deployment_name ="gpt-35-turbo-ft"
+
+deploy_params = {'api-version': "2023-05-01"} 
+deploy_headers = {'Authorization': 'Bearer {}'.format(token), 'Content-Type': 'application/json'}
+
+deploy_data = {
+    "sku": {"name": "standard", "capacity": 1}, 
+    "properties": {
+        "model": {
+            "format": "OpenAI",
+            "name": "ftjob-13fcdd4548f64f5da56491657bf0276f", #retrieve this value from the previous call, it will look like gpt-35-turbo-0613.ft-b044a9d3cf9c4228b5d393567f693b83
+            "version": "1"
+        }
+    }
+}
+deploy_data = json.dumps(deploy_data)
+
+request_url = f'https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resource_group}/providers/Microsoft.CognitiveServices/accounts/{resource_name}/deployments/{model_deployment_name}'
+
+print('Creating a new deployment...')
+
+r = requests.put(request_url, params=deploy_params, headers=deploy_headers, data=deploy_data)
+
+print(r)
+print(r.reason)
+print(r.json())
