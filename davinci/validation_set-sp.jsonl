@@ -1,0 +1,4 @@
+{"prompt": "write command block to move robot forward 30 cm", "completion": "await move(30, Speed.Slow)"}
+{"prompt": "write command block to turn robot to right 90 degrees", "completion": "await turn(90, Speed.Slow)"}
+{"prompt": "write python program to move robot forward 30 cm", "completion": "async def main(): \n\n\n    await move(30)\n\n\n    \n\n\n    "}
+{"prompt": "write python program to turn robot to right 90 degrees", "completion": "async def main(): \n\n\n    await turn(90, Speed.Slow)\n\n\n    \n\n\n    "}

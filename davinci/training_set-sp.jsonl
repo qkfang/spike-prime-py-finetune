@@ -1,0 +1,21 @@
+{"prompt": "python function signature to move robot forward. first parameter is distance in cm. second parameter is speed that could be Slow or Fast.", "completion": "move(targetDistance, speed=Speed.Slow)"}
+{"prompt": "command block to move robot forward 10 cm.", "completion": "await move(10, Speed.Slow)"}
+{"prompt": "command block to move robot backward 10 cm.", "completion": "await move(-10, Speed.Slow)"}
+
+{"prompt": "python function signature to turn robot to its left. first parameter is degrees to turn, positive value turns right, negative value turns left. second parameter is speed that could be Slow or Fast.", "completion": "turn(targetTurnDegree, speed=Speed.Slow)"}
+{"prompt": "command block to turn robot to left 10 degrees.", "completion": "await turn(-10, Speed.Slow)"}
+{"prompt": "command block to turn robot to right 10 degrees.", "completion": "await turn(10, Speed.Slow)"}
+
+{"prompt": "python function signature to rotote robot's top motor. first parameter is degrees to rotate, positive value rotates clockwise, negative value rotates anti-clockwise.", "completion": "await rotateTop(targetDegree)"}
+{"prompt": "command block to rotate robot's motor on the top clockwise 100 degrees.", "completion": "await rotateTop(100)"}
+{"prompt": "command block to rotate robot's motor on the top anti-clockwise 100 degrees.", "completion": "await rotateTop(-100)"}
+
+{"prompt": "python function signature to rotote robot's front motor. first parameter is degrees to rotate, positive value rotates clockwise, negative value rotates anti-clockwise.", "completion": "await rotateFront(targetDegree)"}
+{"prompt": "command block to rotate robot's motor in the front clockwise 100 degrees.", "completion": "await rotateFront(100)"}
+{"prompt": "command block to rotate robot's motor in the front anti-clockwise 100 degrees.", "completion": "await rotateFront(-100)"}
+
+{"prompt": "command block to stop robot's movement", "completion": "motor_pair.stop(motor_pair.PAIR_1, stop = motor.BRAKE)"}
+{"prompt": "command block to delay timer for 1 second", "completion": "time.sleep_ms(1000)"}
+
+{"prompt": "python program's main function to control the robot should be wrapped in main() function. then python commonds to control robot are inside main function.", "completion": "async def main(): \n\n\n #python commands here"}
+{"prompt": "python program to make robot move forward 19cm and then move backward 10cm.", "completion": "async def main(): \n\n\n    await move(19)\n\n\n    await move(-1)"}
